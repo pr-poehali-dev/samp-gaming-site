@@ -192,32 +192,71 @@ const Index = () => {
                   popular: false
                 }
               ].map((plan, index) => (
-                <Card key={index} className={`relative ${plan.popular ? 'border-gaming-orange scale-105' : 'border-border/50'}`}>
+                <Card key={index} className={`relative overflow-hidden group hover:scale-105 transition-all duration-300 ${
+                  plan.popular 
+                    ? 'bg-gradient-to-b from-gaming-orange/20 to-gaming-cyan/20 border-gaming-orange shadow-lg shadow-gaming-orange/25' 
+                    : 'bg-gradient-to-b from-card/80 to-card hover:from-gaming-blue/10 hover:to-gaming-cyan/10 border-border/50 hover:border-gaming-cyan/50'
+                }`}>
+                  <div className="absolute inset-0 bg-gradient-to-br from-gaming-electric/5 to-transparent" />
+                  
                   {plan.popular && (
-                    <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gaming-orange">
-                      Популярный
-                    </Badge>
+                    <>
+                      <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gaming-orange text-white font-bold px-4 py-1 shadow-lg">
+                        ⭐ Популярный
+                      </Badge>
+                      <div className="absolute top-4 right-4 w-12 h-12 bg-gaming-orange/20 rounded-full animate-pulse" />
+                    </>
                   )}
-                  <CardHeader className="text-center">
-                    <CardTitle className="text-2xl">{plan.name}</CardTitle>
-                    <div className="text-3xl font-bold text-gaming-cyan">{plan.price}</div>
+                  
+                  <CardHeader className="text-center relative z-10 pb-4">
+                    <div className="mb-4">
+                      <div className={`w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4 ${
+                        plan.popular 
+                          ? 'bg-gaming-orange/30 border-2 border-gaming-orange' 
+                          : 'bg-gaming-cyan/20 border-2 border-gaming-cyan/50'
+                      }`}>
+                        <Icon 
+                          name={plan.popular ? "Crown" : index === 0 ? "Star" : "Gem"} 
+                          size={28} 
+                          className={plan.popular ? "text-gaming-orange" : "text-gaming-cyan"} 
+                        />
+                      </div>
+                    </div>
+                    <CardTitle className="text-2xl mb-2">{plan.name}</CardTitle>
+                    <div className={`text-4xl font-bold mb-2 ${plan.popular ? 'text-gaming-orange' : 'text-gaming-cyan'}`}>
+                      {plan.price}
+                    </div>
+                    <p className="text-xs text-muted-foreground">на месяц</p>
                   </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-3 mb-6">
+                  
+                  <CardContent className="relative z-10">
+                    <div className="space-y-4 mb-8">
                       {plan.features.map((feature, i) => (
-                        <li key={i} className="flex items-center gap-2">
-                          <Icon name="Check" size={16} className="text-gaming-cyan" />
-                          <span className="text-sm">{feature}</span>
-                        </li>
+                        <div key={i} className="flex items-center gap-3 p-2 rounded-lg bg-card/30">
+                          <div className={`p-1 rounded-full ${plan.popular ? 'bg-gaming-orange/20' : 'bg-gaming-cyan/20'}`}>
+                            <Icon 
+                              name="Check" 
+                              size={14} 
+                              className={plan.popular ? "text-gaming-orange" : "text-gaming-cyan"} 
+                            />
+                          </div>
+                          <span className="text-sm font-medium">{feature}</span>
+                        </div>
                       ))}
-                    </ul>
+                    </div>
+                    
                     <Button 
-                      className={`w-full ${plan.popular 
-                        ? 'bg-gaming-orange hover:bg-gaming-orange/90' 
-                        : 'bg-gaming-cyan hover:bg-gaming-cyan/90'
+                      className={`w-full relative overflow-hidden font-bold text-white shadow-lg transition-all duration-300 ${
+                        plan.popular 
+                          ? 'bg-gradient-to-r from-gaming-orange to-gaming-orange/80 hover:from-gaming-orange/90 hover:to-gaming-orange hover:shadow-gaming-orange/50' 
+                          : 'bg-gradient-to-r from-gaming-cyan to-gaming-blue hover:from-gaming-cyan/90 hover:to-gaming-blue/90 hover:shadow-gaming-cyan/30'
                       }`}
                     >
-                      Приобрести
+                      <span className="relative z-10 flex items-center justify-center gap-2">
+                        <Icon name="ShoppingCart" size={18} />
+                        Приобрести
+                      </span>
+                      <div className="absolute inset-0 bg-white/10 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
                     </Button>
                   </CardContent>
                 </Card>
