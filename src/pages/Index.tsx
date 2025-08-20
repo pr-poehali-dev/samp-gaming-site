@@ -40,7 +40,7 @@ const Index = () => {
       <nav className="fixed top-0 w-full z-50 bg-card/80 backdrop-blur-lg border-b border-border">
         <div className="container mx-auto px-4 py-3 flex items-center justify-between">
           <div className="text-2xl font-bold bg-gradient-to-r from-gaming-orange to-gaming-cyan bg-clip-text text-transparent">
-            SAMP GAMING
+            Aurora Role Play
           </div>
           <div className="hidden md:flex gap-6">
             {[
@@ -81,10 +81,10 @@ const Index = () => {
           <div className="relative container mx-auto px-4 text-center">
             <div className="animate-fade-in">
               <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-gaming-orange via-gaming-cyan to-gaming-blue bg-clip-text text-transparent">
-                SAMP GAMING
+                Aurora Role Play
               </h1>
               <p className="text-xl md:text-2xl mb-8 text-muted-foreground max-w-2xl mx-auto">
-                Лучший игровой сервер с уникальными возможностями и захватывающим геймплеем
+                Лучший ролевой сервер с уникальными возможностями и захватывающим геймплеем
               </p>
               
               <div className="flex flex-col md:flex-row gap-4 justify-center items-center mb-12">
@@ -321,7 +321,7 @@ const Index = () => {
       <footer className="bg-card border-t border-border py-12">
         <div className="container mx-auto px-4 text-center">
           <div className="text-2xl font-bold bg-gradient-to-r from-gaming-orange to-gaming-cyan bg-clip-text text-transparent mb-4">
-            SAMP GAMING
+            Aurora Role Play
           </div>
           <p className="text-muted-foreground mb-6">
             Лучший игровой опыт начинается здесь
