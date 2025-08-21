@@ -169,171 +169,159 @@ const Index = () => {
         <section id="donate" className="py-20">
           <div className="container mx-auto px-4">
             <h2 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-gaming-cyan to-gaming-blue bg-clip-text text-transparent">
-              Автодонат
+              Пополнить баланс
             </h2>
             
-            <div className="max-w-6xl mx-auto">
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div className="max-w-2xl mx-auto">
+              <Card className="relative overflow-hidden bg-gradient-to-b from-card/80 to-card border-border/50 shadow-lg">
+                <div className="absolute inset-0 bg-gradient-to-br from-gaming-electric/5 to-transparent" />
                 
-                {/* Привилегии */}
-                <div>
-                  <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-                    <Icon name="Crown" size={20} className="text-gaming-orange" />
-                    Привилегии
-                  </h3>
-                  <div className="space-y-3">
-                    {[
-                      { name: 'VIP', price: '299₽', duration: '30 дней', popular: false },
-                      { name: 'Premium', price: '599₽', duration: '30 дней', popular: true },
-                      { name: 'Deluxe', price: '999₽', duration: '30 дней', popular: false },
-                      { name: 'Ultimate', price: '1999₽', duration: '30 дней', popular: false }
-                    ].map((privilege, index) => (
-                      <Card key={index} className={`cursor-pointer transition-all hover:scale-105 ${
-                        privilege.popular ? 'border-gaming-orange bg-gaming-orange/5' : 'border-border/50 hover:border-gaming-cyan/50'
-                      }`}>
-                        <CardContent className="p-4">
-                          <div className="flex justify-between items-center">
-                            <div>
-                              <div className="flex items-center gap-2">
-                                <h4 className="font-bold">{privilege.name}</h4>
-                                {privilege.popular && <Badge className="bg-gaming-orange text-xs">ТОП</Badge>}
-                              </div>
-                              <p className="text-xs text-muted-foreground">{privilege.duration}</p>
-                            </div>
-                            <div className="text-gaming-cyan font-bold">{privilege.price}</div>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    ))}
+                <CardHeader className="text-center relative z-10 pb-6">
+                  <div className="w-20 h-20 mx-auto rounded-full bg-gaming-cyan/20 border-2 border-gaming-cyan/50 flex items-center justify-center mb-6">
+                    <Icon name="CreditCard" size={36} className="text-gaming-cyan" />
                   </div>
-                </div>
+                  <CardTitle className="text-2xl mb-2">Пополнение баланса</CardTitle>
+                  <p className="text-muted-foreground">Пополните игровой баланс на любую сумму</p>
+                </CardHeader>
 
-                {/* Игровые предметы */}
-                <div>
-                  <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-                    <Icon name="Package" size={20} className="text-gaming-cyan" />
-                    Предметы
-                  </h3>
-                  <div className="space-y-3">
-                    {[
-                      { name: 'Алмазный меч', price: '150₽', icon: 'Sword' },
-                      { name: 'Зелье силы x10', price: '89₽', icon: 'Flask' },
-                      { name: 'Редкий блок x64', price: '199₽', icon: 'Box' },
-                      { name: 'Энчант книга', price: '250₽', icon: 'Book' },
-                      { name: 'Летающий ковер', price: '399₽', icon: 'Plane' },
-                      { name: 'Магический кристалл', price: '299₽', icon: 'Gem' }
-                    ].map((item, index) => (
-                      <Card key={index} className="cursor-pointer transition-all hover:scale-105 border-border/50 hover:border-gaming-cyan/50">
-                        <CardContent className="p-4">
-                          <div className="flex justify-between items-center">
-                            <div className="flex items-center gap-3">
-                              <div className="w-8 h-8 bg-gaming-cyan/20 rounded-lg flex items-center justify-center">
-                                <Icon name={item.icon as any} size={16} className="text-gaming-cyan" />
-                              </div>
-                              <div>
-                                <h4 className="font-medium text-sm">{item.name}</h4>
-                              </div>
-                            </div>
-                            <div className="text-gaming-cyan font-bold text-sm">{item.price}</div>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    ))}
+                <CardContent className="relative z-10 space-y-6">
+                  {/* Ник игрока */}
+                  <div>
+                    <label className="block text-sm font-medium mb-3 flex items-center gap-2">
+                      <Icon name="User" size={16} className="text-gaming-cyan" />
+                      Ник в игре
+                    </label>
+                    <input 
+                      type="text" 
+                      placeholder="Введите ваш игровой ник"
+                      className="w-full px-4 py-3 bg-card border border-border/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-gaming-cyan focus:border-transparent transition-all"
+                    />
+                    <p className="text-xs text-muted-foreground mt-2">Баланс будет зачислен на этот аккаунт</p>
                   </div>
-                </div>
 
-                {/* Форма заказа */}
-                <div>
-                  <Card className="sticky top-4 border-gaming-electric/30 bg-gradient-to-b from-card/80 to-card">
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-2">
-                        <Icon name="ShoppingCart" size={20} className="text-gaming-orange" />
-                        Оформить заказ
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      {/* Ник игрока */}
-                      <div>
-                        <label className="block text-sm font-medium mb-2">Ник в игре</label>
-                        <input 
-                          type="text" 
-                          placeholder="Введите ваш ник"
-                          className="w-full px-3 py-2 bg-card border border-border/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-gaming-cyan focus:border-transparent text-sm"
-                        />
-                      </div>
+                  {/* Сумма пополнения */}
+                  <div>
+                    <label className="block text-sm font-medium mb-3 flex items-center gap-2">
+                      <Icon name="Coins" size={16} className="text-gaming-orange" />
+                      Сумма пополнения
+                    </label>
+                    <div className="relative">
+                      <input 
+                        type="number" 
+                        placeholder="1000"
+                        min="50"
+                        className="w-full px-4 py-3 bg-card border border-border/50 rounded-lg text-center text-2xl font-bold focus:outline-none focus:ring-2 focus:ring-gaming-cyan focus:border-transparent transition-all"
+                      />
+                      <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gaming-cyan font-bold text-xl">₽</span>
+                    </div>
+                    <p className="text-xs text-muted-foreground mt-2">Минимальная сумма: 50₽</p>
+                  </div>
 
-                      {/* Email */}
-                      <div>
-                        <label className="block text-sm font-medium mb-2">Email</label>
-                        <input 
-                          type="email" 
-                          placeholder="your@email.com"
-                          className="w-full px-3 py-2 bg-card border border-border/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-gaming-cyan focus:border-transparent text-sm"
-                        />
-                      </div>
+                  {/* Быстрые суммы */}
+                  <div>
+                    <label className="block text-sm font-medium mb-3">Быстрый выбор</label>
+                    <div className="grid grid-cols-3 gap-3">
+                      {['100₽', '500₽', '1000₽'].map((amount) => (
+                        <button 
+                          key={amount}
+                          className="px-4 py-3 bg-gaming-cyan/10 border border-gaming-cyan/30 rounded-lg hover:bg-gaming-cyan/20 hover:border-gaming-cyan transition-all text-gaming-cyan font-bold hover:scale-105"
+                        >
+                          {amount}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
 
-                      {/* Промокод */}
-                      <div>
-                        <label className="block text-sm font-medium mb-2">Промокод</label>
-                        <div className="flex gap-2">
-                          <input 
-                            type="text" 
-                            placeholder="СКИДКА10"
-                            className="flex-1 px-3 py-2 bg-card border border-border/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-gaming-cyan focus:border-transparent text-sm"
-                          />
-                          <Button size="sm" variant="outline" className="border-gaming-cyan/50 text-gaming-cyan hover:bg-gaming-cyan/10">
-                            <Icon name="Check" size={14} />
-                          </Button>
-                        </div>
-                      </div>
+                  {/* Email для чека */}
+                  <div>
+                    <label className="block text-sm font-medium mb-3 flex items-center gap-2">
+                      <Icon name="Mail" size={16} className="text-gaming-blue" />
+                      Email для чека (опционально)
+                    </label>
+                    <input 
+                      type="email" 
+                      placeholder="your@email.com"
+                      className="w-full px-4 py-3 bg-card border border-border/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-gaming-cyan focus:border-transparent transition-all"
+                    />
+                  </div>
 
-                      {/* Итого */}
-                      <div className="bg-gaming-blue/10 border border-gaming-blue/30 rounded-lg p-4">
-                        <div className="flex justify-between items-center mb-2">
-                          <span className="text-sm">Выбрано товаров:</span>
-                          <span className="text-sm font-medium">0</span>
-                        </div>
-                        <div className="flex justify-between items-center mb-2">
-                          <span className="text-sm">Скидка:</span>
-                          <span className="text-sm text-gaming-orange">-0₽</span>
-                        </div>
-                        <hr className="border-border/30 my-2" />
-                        <div className="flex justify-between items-center">
-                          <span className="font-bold">Итого:</span>
-                          <span className="font-bold text-gaming-cyan text-lg">0₽</span>
-                        </div>
-                      </div>
-
-                      {/* Способы оплаты */}
-                      <div>
-                        <label className="block text-sm font-medium mb-3">Способ оплаты</label>
-                        <div className="grid grid-cols-2 gap-2">
-                          {[
-                            { name: 'Карта', icon: 'CreditCard' },
-                            { name: 'QIWI', icon: 'Wallet' },
-                            { name: 'Steam', icon: 'Gamepad2' },
-                            { name: 'Crypto', icon: 'Bitcoin' }
-                          ].map((method, index) => (
-                            <button key={index} className="p-3 bg-gaming-cyan/10 border border-gaming-cyan/30 rounded-lg hover:bg-gaming-cyan/20 transition-colors flex flex-col items-center gap-1">
-                              <Icon name={method.icon as any} size={16} className="text-gaming-cyan" />
-                              <span className="text-xs font-medium">{method.name}</span>
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-
-                      <Button className="w-full bg-gradient-to-r from-gaming-orange to-gaming-orange/80 hover:from-gaming-orange/90 hover:to-gaming-orange text-white font-bold py-3 shadow-lg hover:shadow-gaming-orange/30 transition-all">
-                        <Icon name="ShoppingCart" size={18} className="mr-2" />
-                        Оплатить
+                  {/* Промокод */}
+                  <div>
+                    <label className="block text-sm font-medium mb-3 flex items-center gap-2">
+                      <Icon name="Tag" size={16} className="text-gaming-orange" />
+                      Промокод на скидку
+                    </label>
+                    <div className="flex gap-3">
+                      <input 
+                        type="text" 
+                        placeholder="СКИДКА10"
+                        className="flex-1 px-4 py-3 bg-card border border-border/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-gaming-cyan focus:border-transparent transition-all"
+                      />
+                      <Button variant="outline" className="border-gaming-cyan/50 text-gaming-cyan hover:bg-gaming-cyan/10 px-6">
+                        <Icon name="Check" size={16} />
                       </Button>
+                    </div>
+                  </div>
 
-                      <p className="text-xs text-muted-foreground text-center">
-                        После оплаты товары будут автоматически выданы в течение 5 минут
-                      </p>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
+                  {/* Способы оплаты */}
+                  <div>
+                    <label className="block text-sm font-medium mb-3 flex items-center gap-2">
+                      <Icon name="CreditCard" size={16} className="text-gaming-electric" />
+                      Способ оплаты
+                    </label>
+                    <div className="grid grid-cols-2 gap-3">
+                      {[
+                        { name: 'Банковская карта', icon: 'CreditCard', popular: true },
+                        { name: 'QIWI кошелек', icon: 'Wallet', popular: false },
+                        { name: 'Steam Wallet', icon: 'Gamepad2', popular: false },
+                        { name: 'Криптовалюта', icon: 'Bitcoin', popular: false }
+                      ].map((method, index) => (
+                        <button key={index} className={`p-4 border rounded-lg hover:scale-105 transition-all flex flex-col items-center gap-2 ${
+                          method.popular 
+                            ? 'bg-gaming-cyan/20 border-gaming-cyan text-gaming-cyan' 
+                            : 'bg-card border-border/50 hover:border-gaming-cyan/50 hover:bg-gaming-cyan/10'
+                        }`}>
+                          <Icon name={method.icon as any} size={20} />
+                          <span className="text-xs font-medium text-center">{method.name}</span>
+                          {method.popular && <Badge className="bg-gaming-orange text-[10px] px-2">Популярный</Badge>}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Информация о бонусах */}
+                  <div className="bg-gaming-blue/10 border border-gaming-blue/30 rounded-lg p-4">
+                    <h4 className="font-medium mb-3 flex items-center gap-2">
+                      <Icon name="Gift" size={18} className="text-gaming-orange" />
+                      Бонусы за пополнение:
+                    </h4>
+                    <div className="space-y-2">
+                      {[
+                        { amount: '100-499₽', bonus: '+5% к балансу' },
+                        { amount: '500-999₽', bonus: '+10% к балансу' },
+                        { amount: '1000₽+', bonus: '+15% к балансу + VIP статус на день' }
+                      ].map((bonus, i) => (
+                        <div key={i} className="flex items-center justify-between p-2 rounded-lg bg-card/30">
+                          <span className="text-sm font-medium">{bonus.amount}</span>
+                          <span className="text-sm text-gaming-orange font-bold">{bonus.bonus}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <Button className="w-full bg-gradient-to-r from-gaming-cyan to-gaming-blue hover:from-gaming-cyan/90 hover:to-gaming-blue/90 text-white font-bold py-4 shadow-lg hover:shadow-gaming-cyan/30 transition-all duration-300 relative overflow-hidden">
+                    <span className="relative z-10 flex items-center justify-center gap-2">
+                      <Icon name="CreditCard" size={20} />
+                      Пополнить баланс
+                    </span>
+                    <div className="absolute inset-0 bg-white/10 transform scale-x-0 hover:scale-x-100 transition-transform duration-300 origin-left" />
+                  </Button>
+
+                  <p className="text-xs text-muted-foreground text-center">
+                    💰 Баланс зачисляется мгновенно после успешной оплаты
+                  </p>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </section>
