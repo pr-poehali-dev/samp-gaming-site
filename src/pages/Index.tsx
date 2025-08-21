@@ -169,98 +169,77 @@ const Index = () => {
         <section id="donate" className="py-20">
           <div className="container mx-auto px-4">
             <h2 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-gaming-cyan to-gaming-blue bg-clip-text text-transparent">
-              Поддержи проект
+              Пополнить баланс
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              {[
-                {
-                  name: 'Базовый',
-                  price: '199₽',
-                  features: ['Особый ник', 'Доступ к VIP зонам', '50% бонус к опыту'],
-                  popular: false
-                },
-                {
-                  name: 'Премиум',
-                  price: '399₽',
-                  features: ['Все из базового', 'Эксклюзивные скины', 'Приоритет в очереди', 'Особые команды'],
-                  popular: true
-                },
-                {
-                  name: 'Элитный',
-                  price: '799₽',
-                  features: ['Все из премиума', 'Собственный дом', 'Эксклюзивные авто', 'Админ панель'],
-                  popular: false
-                }
-              ].map((plan, index) => (
-                <Card key={index} className={`relative overflow-hidden group hover:scale-105 transition-all duration-300 ${
-                  plan.popular 
-                    ? 'bg-gradient-to-b from-gaming-orange/20 to-gaming-cyan/20 border-gaming-orange shadow-lg shadow-gaming-orange/25' 
-                    : 'bg-gradient-to-b from-card/80 to-card hover:from-gaming-blue/10 hover:to-gaming-cyan/10 border-border/50 hover:border-gaming-cyan/50'
-                }`}>
-                  <div className="absolute inset-0 bg-gradient-to-br from-gaming-electric/5 to-transparent" />
-                  
-                  {plan.popular && (
-                    <>
-                      <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gaming-orange text-white font-bold px-4 py-1 shadow-lg">
-                        ⭐ Популярный
-                      </Badge>
-                      <div className="absolute top-4 right-4 w-12 h-12 bg-gaming-orange/20 rounded-full animate-pulse" />
-                    </>
-                  )}
-                  
-                  <CardHeader className="text-center relative z-10 pb-4">
-                    <div className="mb-4">
-                      <div className={`w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4 ${
-                        plan.popular 
-                          ? 'bg-gaming-orange/30 border-2 border-gaming-orange' 
-                          : 'bg-gaming-cyan/20 border-2 border-gaming-cyan/50'
-                      }`}>
-                        <Icon 
-                          name={plan.popular ? "Crown" : index === 0 ? "Star" : "Gem"} 
-                          size={28} 
-                          className={plan.popular ? "text-gaming-orange" : "text-gaming-cyan"} 
-                        />
-                      </div>
+            <div className="max-w-2xl mx-auto">
+              <Card className="relative overflow-hidden bg-gradient-to-b from-card/80 to-card border-border/50 shadow-lg">
+                <div className="absolute inset-0 bg-gradient-to-br from-gaming-electric/5 to-transparent" />
+                
+                <CardHeader className="text-center relative z-10 pb-6">
+                  <div className="w-20 h-20 mx-auto rounded-full bg-gaming-cyan/20 border-2 border-gaming-cyan/50 flex items-center justify-center mb-6">
+                    <Icon name="CreditCard" size={36} className="text-gaming-cyan" />
+                  </div>
+                  <CardTitle className="text-2xl mb-2">Пополнение баланса</CardTitle>
+                  <p className="text-muted-foreground">Введите сумму для пополнения игрового баланса</p>
+                </CardHeader>
+
+                <CardContent className="relative z-10 space-y-6">
+                  <div>
+                    <label className="block text-sm font-medium mb-3">Сумма пополнения</label>
+                    <div className="relative">
+                      <input 
+                        type="number" 
+                        placeholder="1000"
+                        min="50"
+                        className="w-full px-4 py-3 bg-card border border-border/50 rounded-lg text-center text-2xl font-bold focus:outline-none focus:ring-2 focus:ring-gaming-cyan focus:border-transparent transition-all"
+                      />
+                      <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gaming-cyan font-bold text-xl">₽</span>
                     </div>
-                    <CardTitle className="text-2xl mb-2">{plan.name}</CardTitle>
-                    <div className={`text-4xl font-bold mb-2 ${plan.popular ? 'text-gaming-orange' : 'text-gaming-cyan'}`}>
-                      {plan.price}
-                    </div>
-                    <p className="text-xs text-muted-foreground">на месяц</p>
-                  </CardHeader>
-                  
-                  <CardContent className="relative z-10">
-                    <div className="space-y-4 mb-8">
-                      {plan.features.map((feature, i) => (
+                    <p className="text-xs text-muted-foreground mt-2">Минимальная сумма: 50₽</p>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-3">
+                    {['100₽', '500₽', '1000₽'].map((amount) => (
+                      <button 
+                        key={amount}
+                        className="px-4 py-2 bg-gaming-cyan/10 border border-gaming-cyan/30 rounded-lg hover:bg-gaming-cyan/20 hover:border-gaming-cyan transition-colors text-gaming-cyan font-medium"
+                      >
+                        {amount}
+                      </button>
+                    ))}
+                  </div>
+
+                  <div className="bg-gaming-blue/10 border border-gaming-blue/30 rounded-lg p-4">
+                    <h4 className="font-medium mb-3 flex items-center gap-2">
+                      <Icon name="Gift" size={18} className="text-gaming-orange" />
+                      Что дает пополнение баланса:
+                    </h4>
+                    <div className="space-y-2">
+                      {[
+                        'Покупка игровых предметов',
+                        'Аренда транспорта и недвижимости', 
+                        'Участие в аукционах',
+                        'Доступ к премиум услугам'
+                      ].map((feature, i) => (
                         <div key={i} className="flex items-center gap-3 p-2 rounded-lg bg-card/30">
-                          <div className={`p-1 rounded-full ${plan.popular ? 'bg-gaming-orange/20' : 'bg-gaming-cyan/20'}`}>
-                            <Icon 
-                              name="Check" 
-                              size={14} 
-                              className={plan.popular ? "text-gaming-orange" : "text-gaming-cyan"} 
-                            />
+                          <div className="p-1 rounded-full bg-gaming-cyan/20">
+                            <Icon name="Check" size={14} className="text-gaming-cyan" />
                           </div>
                           <span className="text-sm font-medium">{feature}</span>
                         </div>
                       ))}
                     </div>
-                    
-                    <Button 
-                      className={`w-full relative overflow-hidden font-bold text-white shadow-lg transition-all duration-300 ${
-                        plan.popular 
-                          ? 'bg-gradient-to-r from-gaming-orange to-gaming-orange/80 hover:from-gaming-orange/90 hover:to-gaming-orange hover:shadow-gaming-orange/50' 
-                          : 'bg-gradient-to-r from-gaming-cyan to-gaming-blue hover:from-gaming-cyan/90 hover:to-gaming-blue/90 hover:shadow-gaming-cyan/30'
-                      }`}
-                    >
-                      <span className="relative z-10 flex items-center justify-center gap-2">
-                        <Icon name="ShoppingCart" size={18} />
-                        Приобрести
-                      </span>
-                      <div className="absolute inset-0 bg-white/10 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-                    </Button>
-                  </CardContent>
-                </Card>
-              ))}
+                  </div>
+
+                  <Button className="w-full bg-gradient-to-r from-gaming-cyan to-gaming-blue hover:from-gaming-cyan/90 hover:to-gaming-blue/90 text-white font-bold py-4 shadow-lg hover:shadow-gaming-cyan/30 transition-all duration-300 relative overflow-hidden">
+                    <span className="relative z-10 flex items-center justify-center gap-2">
+                      <Icon name="CreditCard" size={20} />
+                      Пополнить баланс
+                    </span>
+                    <div className="absolute inset-0 bg-white/10 transform scale-x-0 hover:scale-x-100 transition-transform duration-300 origin-left" />
+                  </Button>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </section>
