@@ -245,23 +245,7 @@ const Index = () => {
                     />
                   </div>
 
-                  {/* Промокод */}
-                  <div>
-                    <label className="block text-sm font-medium mb-3 flex items-center gap-2">
-                      <Icon name="Tag" size={16} className="text-gaming-orange" />
-                      Промокод на скидку
-                    </label>
-                    <div className="flex gap-3">
-                      <input 
-                        type="text" 
-                        placeholder="СКИДКА10"
-                        className="flex-1 px-4 py-3 bg-card border border-border/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-gaming-cyan focus:border-transparent transition-all"
-                      />
-                      <Button variant="outline" className="border-gaming-cyan/50 text-gaming-cyan hover:bg-gaming-cyan/10 px-6">
-                        <Icon name="Check" size={16} />
-                      </Button>
-                    </div>
-                  </div>
+
 
                   {/* Способы оплаты */}
                   <div>
