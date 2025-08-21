@@ -313,7 +313,7 @@ const Index = () => {
         <section id="forum" className="py-20 bg-card/10">
           <div className="container mx-auto px-4">
             <h2 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-gaming-blue to-gaming-cyan bg-clip-text text-transparent">
-              Форум
+              Группа ВКонтакте
             </h2>
             <div className="max-w-4xl mx-auto">
               <Card className="relative overflow-hidden bg-gradient-to-b from-card/80 to-card border-border/50 shadow-lg">
@@ -321,95 +321,97 @@ const Index = () => {
                 
                 <CardHeader className="text-center relative z-10 pb-6">
                   <div className="w-20 h-20 mx-auto rounded-full bg-gaming-blue/20 border-2 border-gaming-blue/50 flex items-center justify-center mb-6">
-                    <Icon name="MessageCircle" size={36} className="text-gaming-blue" />
+                    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" className="text-[#0077FF]">
+                      <path d="M18 3.6C9.4 3.6 2.4 9.7 2.4 17.1C2.4 21.3 4.5 25 7.9 27.4V32.4L12.7 29.8C14.4 30.2 16.2 30.4 18 30.4C26.6 30.4 33.6 24.3 33.6 16.9C33.6 9.7 26.6 3.6 18 3.6Z" fill="currentColor"/>
+                      <path d="M12 14.4H24V16.8H12V14.4ZM12 18H21.6V20.4H12V18Z" fill="white"/>
+                    </svg>
                   </div>
-                  <CardTitle className="text-2xl mb-2">Форум сообщества</CardTitle>
-                  <p className="text-muted-foreground">Присоединяйтесь к обсуждениям, делитесь опытом и находите новых друзей</p>
+                  <CardTitle className="text-2xl mb-2">Группа ВКонтакте</CardTitle>
+                  <p className="text-muted-foreground">Присоединяйтесь к нашему сообществу в ВК для общения и новостей</p>
                 </CardHeader>
 
                 <CardContent className="relative z-10 space-y-6">
-                  {/* Статистика форума */}
+                  {/* Статистика группы */}
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div className="bg-gaming-cyan/10 border border-gaming-cyan/30 rounded-lg p-4 text-center">
                       <div className="text-2xl font-bold text-gaming-cyan mb-1">2,547</div>
                       <div className="text-sm text-muted-foreground">Участников</div>
                     </div>
                     <div className="bg-gaming-orange/10 border border-gaming-orange/30 rounded-lg p-4 text-center">
-                      <div className="text-2xl font-bold text-gaming-orange mb-1">15,832</div>
-                      <div className="text-sm text-muted-foreground">Сообщений</div>
+                      <div className="text-2xl font-bold text-gaming-orange mb-1">512</div>
+                      <div className="text-sm text-muted-foreground">Постов</div>
                     </div>
                     <div className="bg-gaming-blue/10 border border-gaming-blue/30 rounded-lg p-4 text-center">
-                      <div className="text-2xl font-bold text-gaming-blue mb-1">1,234</div>
-                      <div className="text-sm text-muted-foreground">Тем</div>
+                      <div className="text-2xl font-bold text-gaming-blue mb-1">98</div>
+                      <div className="text-sm text-muted-foreground">Обсуждений</div>
                     </div>
                   </div>
 
-                  {/* Популярные разделы */}
+                  {/* Возможности группы */}
                   <div>
                     <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
-                      <Icon name="Fire" size={20} className="text-gaming-orange" />
-                      Популярные разделы
+                      <Icon name="Star" size={20} className="text-gaming-orange" />
+                      Что вас ждет в группе
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {[
-                        { name: 'Общие обсуждения', posts: 523, icon: 'MessageSquare' },
-                        { name: 'Новости сервера', posts: 89, icon: 'Newspaper' },
-                        { name: 'Гайды и обучение', posts: 156, icon: 'BookOpen' },
-                        { name: 'Поиск команды', posts: 234, icon: 'Users' }
-                      ].map((section, index) => (
-                        <div key={index} className="p-4 bg-gaming-cyan/10 border border-gaming-cyan/30 rounded-lg hover:bg-gaming-cyan/20 transition-colors cursor-pointer">
-                          <div className="flex items-center justify-between">
-                            <div className="flex items-center gap-3">
-                              <Icon name={section.icon as any} size={20} className="text-gaming-cyan" />
-                              <div>
-                                <div className="font-medium">{section.name}</div>
-                                <div className="text-sm text-muted-foreground">{section.posts} сообщений</div>
-                              </div>
+                        { name: 'Оперативные новости', desc: 'Первыми узнавайте об обновлениях', icon: 'Newspaper' },
+                        { name: 'Общение с игроками', desc: 'Находите единомышленников', icon: 'Users' },
+                        { name: 'Поддержка и помощь', desc: 'Быстрые ответы от администрации', icon: 'HelpCircle' },
+                        { name: 'Конкурсы и розыгрыши', desc: 'Участвуйте и выигрывайте призы', icon: 'Gift' }
+                      ].map((feature, index) => (
+                        <div key={index} className="p-4 bg-[#0077FF]/10 border border-[#0077FF]/30 rounded-lg hover:bg-[#0077FF]/20 transition-colors">
+                          <div className="flex items-start gap-3">
+                            <Icon name={feature.icon as any} size={20} className="text-[#0077FF] mt-0.5" />
+                            <div>
+                              <div className="font-medium">{feature.name}</div>
+                              <div className="text-sm text-muted-foreground">{feature.desc}</div>
                             </div>
-                            <Icon name="ChevronRight" size={16} className="text-muted-foreground" />
                           </div>
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  {/* Последняя активность */}
+                  {/* Недавние посты */}
                   <div>
                     <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
                       <Icon name="Clock" size={20} className="text-gaming-electric" />
-                      Последняя активность
+                      Недавние посты
                     </h3>
                     <div className="space-y-3">
                       {[
-                        { title: 'Новое событие на сервере', author: 'AdminTeam', time: '5 мин назад' },
-                        { title: 'Обсуждение изменений в PvP', author: 'Player_Pro', time: '23 мин назад' },
-                        { title: 'Гайд по новичкам обновлен', author: 'Moderator_X', time: '1 час назад' }
-                      ].map((activity, index) => (
+                        { title: '📢 Масштабное обновление уже скоро!', author: 'Администрация', time: '2 часа назад' },
+                        { title: '🎯 Итоги турнира выходного дня', author: 'Модератор', time: '6 часов назад' },
+                        { title: '💡 Советы для новых игроков', author: 'Помощник', time: '12 часов назад' }
+                      ].map((post, index) => (
                         <div key={index} className="flex items-center justify-between p-3 bg-card/50 rounded-lg border border-border/30">
                           <div>
-                            <div className="font-medium text-sm">{activity.title}</div>
-                            <div className="text-xs text-muted-foreground">от {activity.author}</div>
+                            <div className="font-medium text-sm">{post.title}</div>
+                            <div className="text-xs text-muted-foreground">от {post.author}</div>
                           </div>
-                          <div className="text-xs text-muted-foreground">{activity.time}</div>
+                          <div className="text-xs text-muted-foreground">{post.time}</div>
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  {/* Кнопка перехода на форум */}
+                  {/* Кнопка перехода в ВК */}
                   <div className="text-center pt-4">
                     <Button 
-                      onClick={() => window.open('https://forum.example.com', '_blank')}
-                      className="bg-gradient-to-r from-gaming-blue to-gaming-cyan hover:from-gaming-blue/90 hover:to-gaming-cyan/90 text-white font-bold py-4 px-8 shadow-lg hover:shadow-gaming-blue/30 transition-all duration-300 relative overflow-hidden"
+                      onClick={() => window.open('https://vk.com/ваша_ссылка', '_blank')}
+                      className="bg-gradient-to-r from-[#0077FF] to-[#0088CC] hover:from-[#0077FF]/90 hover:to-[#0088CC]/90 text-white font-bold py-4 px-8 shadow-lg hover:shadow-[#0077FF]/30 transition-all duration-300 relative overflow-hidden"
                     >
                       <span className="relative z-10 flex items-center justify-center gap-2">
-                        <Icon name="ExternalLink" size={20} />
-                        Перейти на форум
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                          <path d="M10 2C5.6 2 2 5.6 2 10C2 12.2 2.8 14.2 4.2 15.7L17.8 15.7C18.5 14.4 18.9 12.9 18.9 11.3C18.9 6.9 15.3 3.3 10.9 3.3H10V2Z" fill="currentColor"/>
+                        </svg>
+                        Присоединиться к группе
                       </span>
                       <div className="absolute inset-0 bg-white/10 transform scale-x-0 hover:scale-x-100 transition-transform duration-300 origin-left" />
                     </Button>
                     <p className="text-xs text-muted-foreground mt-3">
-                      🌐 Откроется в новой вкладке
+                      🌐 Откроется ВКонтакте в новой вкладке
                     </p>
                   </div>
                 </CardContent>
