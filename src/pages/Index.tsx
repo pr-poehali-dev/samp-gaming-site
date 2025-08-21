@@ -304,6 +304,12 @@ const Index = () => {
                   <p className="text-xs text-muted-foreground text-center">
                     💰 Баланс зачисляется мгновенно после успешной оплаты
                   </p>
+
+                  <div className="text-center mt-4 pt-4 border-t border-border/30">
+                    <a href="https://freekassa.net" target="_blank" rel="noopener noreferrer">
+                      <img src="https://cdn.freekassa.net/banners/small-dark-1.png" title="Прием платежей" className="mx-auto hover:opacity-80 transition-opacity" />
+                    </a>
+                  </div>
                 </CardContent>
               </Card>
             </div>
