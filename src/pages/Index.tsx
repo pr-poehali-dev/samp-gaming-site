@@ -315,46 +315,106 @@ const Index = () => {
             <h2 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-gaming-blue to-gaming-cyan bg-clip-text text-transparent">
               Форум
             </h2>
-            <Tabs defaultValue="discussions" className="max-w-4xl mx-auto">
-              <TabsList className="grid w-full grid-cols-3">
-                <TabsTrigger value="discussions">Обсуждения</TabsTrigger>
-                <TabsTrigger value="guides">Гайды</TabsTrigger>
-                <TabsTrigger value="bugs">Баги</TabsTrigger>
-              </TabsList>
-              
-              <TabsContent value="discussions" className="space-y-4">
-                {[
-                  { title: 'Новое обновление сервера', author: 'Admin', replies: 15, time: '2 часа назад' },
-                  { title: 'Обсуждение новых правил', author: 'Moderator', replies: 8, time: '5 часов назад' },
-                  { title: 'Предложения по улучшению', author: 'Player123', replies: 23, time: '1 день назад' }
-                ].map((topic, index) => (
-                  <Card key={index} className="hover:bg-accent/50 transition-colors cursor-pointer">
-                    <CardContent className="p-4">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <h3 className="font-semibold">{topic.title}</h3>
-                          <p className="text-sm text-muted-foreground">от {topic.author}</p>
+            <div className="max-w-4xl mx-auto">
+              <Card className="relative overflow-hidden bg-gradient-to-b from-card/80 to-card border-border/50 shadow-lg">
+                <div className="absolute inset-0 bg-gradient-to-br from-gaming-electric/5 to-transparent" />
+                
+                <CardHeader className="text-center relative z-10 pb-6">
+                  <div className="w-20 h-20 mx-auto rounded-full bg-gaming-blue/20 border-2 border-gaming-blue/50 flex items-center justify-center mb-6">
+                    <Icon name="MessageCircle" size={36} className="text-gaming-blue" />
+                  </div>
+                  <CardTitle className="text-2xl mb-2">Форум сообщества</CardTitle>
+                  <p className="text-muted-foreground">Присоединяйтесь к обсуждениям, делитесь опытом и находите новых друзей</p>
+                </CardHeader>
+
+                <CardContent className="relative z-10 space-y-6">
+                  {/* Статистика форума */}
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="bg-gaming-cyan/10 border border-gaming-cyan/30 rounded-lg p-4 text-center">
+                      <div className="text-2xl font-bold text-gaming-cyan mb-1">2,547</div>
+                      <div className="text-sm text-muted-foreground">Участников</div>
+                    </div>
+                    <div className="bg-gaming-orange/10 border border-gaming-orange/30 rounded-lg p-4 text-center">
+                      <div className="text-2xl font-bold text-gaming-orange mb-1">15,832</div>
+                      <div className="text-sm text-muted-foreground">Сообщений</div>
+                    </div>
+                    <div className="bg-gaming-blue/10 border border-gaming-blue/30 rounded-lg p-4 text-center">
+                      <div className="text-2xl font-bold text-gaming-blue mb-1">1,234</div>
+                      <div className="text-sm text-muted-foreground">Тем</div>
+                    </div>
+                  </div>
+
+                  {/* Популярные разделы */}
+                  <div>
+                    <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
+                      <Icon name="Fire" size={20} className="text-gaming-orange" />
+                      Популярные разделы
+                    </h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {[
+                        { name: 'Общие обсуждения', posts: 523, icon: 'MessageSquare' },
+                        { name: 'Новости сервера', posts: 89, icon: 'Newspaper' },
+                        { name: 'Гайды и обучение', posts: 156, icon: 'BookOpen' },
+                        { name: 'Поиск команды', posts: 234, icon: 'Users' }
+                      ].map((section, index) => (
+                        <div key={index} className="p-4 bg-gaming-cyan/10 border border-gaming-cyan/30 rounded-lg hover:bg-gaming-cyan/20 transition-colors cursor-pointer">
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-3">
+                              <Icon name={section.icon as any} size={20} className="text-gaming-cyan" />
+                              <div>
+                                <div className="font-medium">{section.name}</div>
+                                <div className="text-sm text-muted-foreground">{section.posts} сообщений</div>
+                              </div>
+                            </div>
+                            <Icon name="ChevronRight" size={16} className="text-muted-foreground" />
+                          </div>
                         </div>
-                        <div className="text-right text-sm text-muted-foreground">
-                          <div>{topic.replies} ответов</div>
-                          <div>{topic.time}</div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Последняя активность */}
+                  <div>
+                    <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
+                      <Icon name="Clock" size={20} className="text-gaming-electric" />
+                      Последняя активность
+                    </h3>
+                    <div className="space-y-3">
+                      {[
+                        { title: 'Новое событие на сервере', author: 'AdminTeam', time: '5 мин назад' },
+                        { title: 'Обсуждение изменений в PvP', author: 'Player_Pro', time: '23 мин назад' },
+                        { title: 'Гайд по новичкам обновлен', author: 'Moderator_X', time: '1 час назад' }
+                      ].map((activity, index) => (
+                        <div key={index} className="flex items-center justify-between p-3 bg-card/50 rounded-lg border border-border/30">
+                          <div>
+                            <div className="font-medium text-sm">{activity.title}</div>
+                            <div className="text-xs text-muted-foreground">от {activity.author}</div>
+                          </div>
+                          <div className="text-xs text-muted-foreground">{activity.time}</div>
                         </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </TabsContent>
-              
-              <TabsContent value="guides" className="text-center py-8">
-                <Icon name="BookOpen" size={48} className="mx-auto mb-4 text-gaming-cyan" />
-                <p className="text-muted-foreground">Раздел с гайдами скоро появится</p>
-              </TabsContent>
-              
-              <TabsContent value="bugs" className="text-center py-8">
-                <Icon name="Bug" size={48} className="mx-auto mb-4 text-gaming-orange" />
-                <p className="text-muted-foreground">Раздел с багами скоро появится</p>
-              </TabsContent>
-            </Tabs>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Кнопка перехода на форум */}
+                  <div className="text-center pt-4">
+                    <Button 
+                      onClick={() => window.open('https://forum.example.com', '_blank')}
+                      className="bg-gradient-to-r from-gaming-blue to-gaming-cyan hover:from-gaming-blue/90 hover:to-gaming-cyan/90 text-white font-bold py-4 px-8 shadow-lg hover:shadow-gaming-blue/30 transition-all duration-300 relative overflow-hidden"
+                    >
+                      <span className="relative z-10 flex items-center justify-center gap-2">
+                        <Icon name="ExternalLink" size={20} />
+                        Перейти на форум
+                      </span>
+                      <div className="absolute inset-0 bg-white/10 transform scale-x-0 hover:scale-x-100 transition-transform duration-300 origin-left" />
+                    </Button>
+                    <p className="text-xs text-muted-foreground mt-3">
+                      🌐 Откроется в новой вкладке
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </section>
 
